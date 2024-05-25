@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Team Builder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script>
+        async function fetchPokemon() {
+            const pokemonName = document.getElementById('pokemonName').value;
+            const response = await fetch('/pokemon', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ name: pokemonName })
+            });
+            const result = await response.json();
+        }
+    </script>
+</head>
+<body>
+    
+    <h1>Pokemon Team Builder</h1>
+    <input type="text" id="pokemonName" placeholder="Enter Pokemon name or ID">
+    <button type="button" class="btn btn-primary" onclick="fetchPokemon()">Search</button>
+    <button type="button" class="btn btn-secondary" onclick="">Add</button>
+    <div id="result"></div>
+    <img id="pokemonImage" src="" alt="Pokemon Image">
+
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img id="pokemonCard1img" src="" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="pokemonCard1txt" class="card-title">Empty</h5>
+              <a class="btn btn-primary" onclick="">Add</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img id="pokemonCard2img" src="" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="pokemonCard2txt" class="card-title">Empty</h5>
+              <a class="btn btn-primary" onclick="">Add</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img id="pokemonCard3img" src="" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 id="pokemonCard3txt" class="card-title">Empty</h5>
+              <a class="btn btn-primary" onclick="">Add</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
